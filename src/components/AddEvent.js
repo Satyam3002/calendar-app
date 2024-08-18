@@ -6,13 +6,13 @@ const AddEvent = () => {
   const { setEvents } = useContext(EventContext);
   const [title, setTitle] = useState('');
   const [date, setDate] = useState('');
-  const [description, setDescription] = useState(''); // New state for description
+  const [description, setDescription] = useState(''); 
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
     e.preventDefault();
-    if (!title || !date) return; // Simple validation
-    const newEvent = { id: Date.now(), title, date, description, category: 'Work' }; // Include description
+    if (!title || !date) return; 
+    const newEvent = { id: Date.now(), title, date, description, category: 'Work' }; 
     setEvents(prevEvents => [...prevEvents, newEvent]);
     navigate('/');
   };

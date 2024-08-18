@@ -161,7 +161,7 @@ const CalendarView = () => {
   );
 };
 
-// Helper function to get category color
+
 const getCategoryColor = (category) => {
   switch (category) {
     case 'Work':

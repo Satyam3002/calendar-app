@@ -7,7 +7,7 @@ const firstDayOfMonth = (month, year) => new Date(year, month, 1).getDay();
 
 const CalendarView = () => {
   const { events } = useContext(EventContext);
-  const [filter, setFilter] = useState('All'); // Filter state
+  const [filter, setFilter] = useState('All'); 
   const today = new Date();
   const month = today.getMonth();
   const year = today.getFullYear();
@@ -17,7 +17,7 @@ const CalendarView = () => {
   const days = Array.from({ length: numDays }, (_, i) => i + 1);
   const emptyDays = Array.from({ length: startDay }, () => null);
 
-  // Filtered events based on selected category
+ 
   const filteredEvents = filter === 'All' ? events : events.filter(event => event.category === filter);
 
   return (
