@@ -1,24 +1,28 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from 'react';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import CalendarView from './components/CalendarView';
+import AddEvent from './components/AddEvent';
+import EditEvent from './components/EditEvent';
+import EventDetails from './components/EventDetails';
+
+export const EventContext = React.createContext();
 
 function App() {
+  const [events, setEvents] = useState([]);
+
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <EventContext.Provider value={{ events, setEvents }}>
+      <Router>
+        <div className="min-h-screen bg-gray-100 p-6">
+          <Routes>
+            <Route path="/" element={<CalendarView />} />
+            <Route path="/add" element={<AddEvent />} />
+            <Route path="/edit/:id" element={<EditEvent />} />
+            <Route path="/event/:id" element={<EventDetails />} />
+          </Routes>
+        </div>
+      </Router>
+    </EventContext.Provider>
   );
 }
 
